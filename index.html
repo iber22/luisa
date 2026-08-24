@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5 Cartinhas pra Luísa</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <h1 class="hero__title">5 CARTINHAS<br>PARA LUÍSA</h1>
+    <p class="hero__subtitle">clique em cada envelope para abrir</p>
+    <div class="hero__hearts">
+      <div class="pixel-heart"></div>
+      <div class="pixel-heart"></div>
+      <div class="pixel-heart"></div>
+    </div>
+  </header>
+
+  <main class="envelopes" id="envelopes">
+    <!-- os 7 envelopes são criados automaticamente pelo script -->
+  </main>
+
+  <!-- Modal da carta -->
+  <div class="overlay" id="overlay">
+    <div class="letter-card" role="dialog" aria-modal="true" aria-labelledby="letterTitle">
+      <button class="letter-card__close" id="closeBtn" aria-label="Fechar carta">X</button>
+      <h2 class="letter-card__title" id="letterTitle">Carta 1</h2>
+      <div class="letter-card__photo-frame">
+        <img class="letter-card__photo" id="letterPhoto" src="" alt="Foto da carta">
+      </div>
+      <p class="letter-card__text" id="letterText"></p>
+      <div class="letter-card__footer">
+        <div class="pixel-heart"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    feito com pixels e carinho ✿
+  </footer>
+
+<script>
+/* =========================================================
+   ✏️  EDITE AQUI: o texto de cada carta e o nome da foto
+   As fotos devem ficar dentro da pasta "img" ao lado deste
+   arquivo. Ex: img/carta1.jpg, img/carta2.png, etc.
+   ========================================================= */
+const CARTAS = [
+  {
+    titulo: "Carta 1",
+    texto: "Meu bem, você é a melhor coisa que já me aconteceu, eu não tenho palavras pra descrever minha gratidão a Deus por ter me dado você\n Você transforma cada dia da minha vida em algo único, quando você olha pra mim eu me sinto o cara mais especial do mundo, eu nunca fui o destaque em nada, mas quando você olha pra mim, eu tenh certeza que estou no lugar que eu preciso estar, te amo mil milhões, daqui até a lua, indo e voltando 1 milhão de vezes!",
+    foto: "img/carta1.jpg"
+  },
+  {
+    titulo: "Carta 2",
+    texto: "Cada detalhe seu me fascina, eu me apaixono toda vez que eu te vejo, você é a mulher mais linda do mundo, e cada detalhe seu me apaixona\n Eu sou o cara mais sortudo, sortudo não, abençoado, porque Deus me abençoou quando colocou você em minha vida e desde então eu tenho a pessoa mais incrivel ao meu lado, eu te amo muito!",
+    foto: "img/carta2.jpg"
+  },
+  {
+    titulo: "Carta 3",
+    texto: "Seu amor pelo reino me inspira, acho que todas as suas infinitas qualidades seu amor por Jesus é a minha favorita, ver você servindo, adorando, buscando proximidade com Ele, só aumenta a minha certeza que é você que vai estar no altar comigo\n A sua essência é unica, eu nunca vi nada parecido, você é a mulher de Provérbios 31, ou eu facilmente poderia colocar seu nome no lugar da palavra amor em 1 Corintios, 13: 4-7\n Você é incrivel meu bem, e o Seu propósito é gigante!",
+    foto: "img/carta3.jpg"
+  },
+  {
+    titulo: "Carta 4",
+    texto: "Escreva aqui o texto\nda quarta carta.",
+    foto: "img/carta4.jpg"
+  },
+  {
+    titulo: "Carta 5",
+    texto: "Escreva aqui o texto\nda quinta carta.",
+    foto: "img/carta5.jpg"
+  }
+];
+/* ========================================================= */
+
+const envelopesContainer = document.getElementById('envelopes');
+const overlay = document.getElementById('overlay');
+const letterTitle = document.getElementById('letterTitle');
+const letterText = document.getElementById('letterText');
+const letterPhoto = document.getElementById('letterPhoto');
+const closeBtn = document.getElementById('closeBtn');
+
+// cria os 7 envelopes na tela
+CARTAS.forEach((carta, i) => {
+  const card = document.createElement('div');
+  card.className = 'envelope-card';
+  card.id = 'card-' + i;
+
+  card.innerHTML = `
+    <button class="envelope-btn" id="env-${i}" aria-label="Abrir ${carta.titulo}">
+      <div class="env-peek"></div>
+      <div class="env-body"></div>
+      <div class="env-flap"></div>
+      <div class="env-heart">
+        <div class="pixel-heart"></div>
+      </div>
+    </button>
+    <span class="envelope-label">Nº ${i + 1}</span>
+  `;
+
+  envelopesContainer.appendChild(card);
+
+  const btn = card.querySelector('.envelope-btn');
+  btn.addEventListener('click', () => {
+    // marca o envelope como aberto (fica aberto visualmente)
+    btn.classList.add('opened');
+    card.classList.add('is-opened');
+    abrirCarta(i);
+  });
+});
+
+function abrirCarta(i){
+  const carta = CARTAS[i];
+  letterTitle.textContent = carta.titulo;
+  letterText.textContent = carta.texto;
+  letterPhoto.src = carta.foto;
+  letterPhoto.alt = carta.titulo;
+  overlay.classList.add('is-visible');
+}
+
+function fecharCarta(){
+  overlay.classList.remove('is-visible');
+}
+
+closeBtn.addEventListener('click', fecharCarta);
+overlay.addEventListener('click', (e) => {
+  if (e.target === overlay) fecharCarta();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') fecharCarta();
+});
+</script>
+
+</body>
+</html>
