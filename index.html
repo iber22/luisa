@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>te amo mi amoreeee</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <h1 class="hero__title">Minha Princesa<br><Em>Escrevendo um pouco mais sobre a pessoa incrivel que você é e tudo o que faz por mim</Em><br>Eu te amo muito</h1>
+    <p class="hero__subtitle">clique em cada coração para abrir</p>
+    <div class="hero__sparkles">
+      <div class="pixel-star"></div>
+      <div class="pixel-star"></div>
+      <div class="pixel-star"></div>
+    </div>
+  </header>
+
+  <main class="hearts-grid" id="hearts">
+    <!-- os 3 corações são criados automaticamente pelo script -->
+  </main>
+
+  <!-- Modal da carta -->
+  <div class="overlay" id="overlay">
+    <div class="letter-card" role="dialog" aria-modal="true" aria-labelledby="letterTitle">
+      <button class="letter-card__close" id="closeBtn" aria-label="Fechar carta">X</button>
+      <h2 class="letter-card__title" id="letterTitle">Título</h2>
+      <div class="letter-card__photo-frame">
+        <img class="letter-card__photo" id="letterPhoto" src="" alt="Foto da carta">
+      </div>
+      <p class="letter-card__text" id="letterText"></p>
+      <div class="letter-card__footer">
+        <div class="pixel-star"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    pra melhor namorada do mundo, mesmo sem ser oficial
+  </footer>
+
+<script>
+/* =========================================================
+   ✏️  EDITE AQUI: o texto de cada coração e o nome da foto
+   As fotos devem ficar dentro da pasta "img" ao lado deste
+   arquivo. Ex: img/coracao1.jpg, img/coracao2.png, etc.
+   ========================================================= */
+const CORACOES = [
+  {
+    titulo: "Quem a Luísa é pra mim?",
+    texto: "Desde que você chegou não tem um dia em que eu não acorde com um sorriso no rosto, eu falo que existe um Pedro antes e um Pedro depois de você, a mudança é nitida.\n Acho que se eu fosse definir quem você é pra mim em uma palavra eu falaria Tudo, meus dias são coloridos com você neles, minhas semanas massivas e cansativas se tornaram leves, pois a garota mais incrivel do mundo é a parte mais importante delas.\n Você é o sol loiro (agora moreno kkkk) que ilumina minha vida, você me coloca pra cima, você faz de tudo pra tirar um sorriso do meu rosto, você é a garota dos olhos de Jesus e é tão cheia do Amor dEle que esse amor inundou a minha vida também, e é lindo isso!\n Eu sou apaixonado em cada detalher seu, cada detalhe da sua personalidade, cada detalhe presente em você, eu poderia citar um zilhão de coisas, como por exemplo, o jeito que seus olhos brilham quando me vê, eu sou apaixonado neles, pois toda vez que olho pra eles, eu vejo o brilho do espirito santo.\n Você é luz, você é o amor da minha vida, meu amor por você é como as Estações, mudam, se renovam, se adptam, mas nunca deixam de existir.\n você é incrivel meu amor, nunca se esqueça disso!",
+    foto: "coracao1.jpg"
+  },
+  {
+    titulo: "Clique e tenha uma surpresa",
+    texto: "A única vez que chorei por medo de perder alguém foi por você, eu olhava para aquela sinuca de bico que o nosso relacionamento estava e só pensava que se você quisesse abandonar o barco, você tava totalmente no seu direito, pois você não precisava passar por aquilo, por um menino que até então era inseguro, não sabia confiar e achava que a qualquer dia poderia aparecer outro alguém 100x melhor que ele, mas você escolheu ficar, escolheu me dar a mão e enfrentar tudo aquilo comigo, foi ali que eu percebi que você é a mulher que Deus preparou pra mim, o amor da minha vida! Em toda a história jamais existira palavra pra definir minha gratidão a Deus por colocar você na minha vida, você chegou do nada, da forma mais aleatória possível, me deu um pé na bunda e depois se tornou tudo pra mim, meu amor por ti minha princesa é a coisa mais linda que eu já senti, ele é Inefável que é a unica palavra que chegou perto de definir meu amor por ti, Inefável é algo extraordinário, sublime ou intenso ao ponto de não poder ser expresso ou descrito com palavras. Obrigado por tudo meu bem, você transformou minha vida, hoje eu sou feliz, ando de cabeça erguida e sigo ansioso pra passar cada momento da minha vida com você, eu te vivo!",
+    foto: "coracao2.jpg"
+  },
+  {
+    titulo: "Clique e tenha uma surpresa",
+    texto: "EU TE AMO, E ESSA É SÓ MAIS UMA FORMA QUE EU BUSCO PRA ALEGRAR SEU DIA, MESMO ESTANDO LONGE EU BUSCO ESTAR PERTO\n EU TE AMO MIL MILHÕES TRILHÕES ZILHÕES!!!!!!!!!!!!!!",
+    foto: "coracao3.jpg"
+  }
+];
+/* ========================================================= */
+
+const heartsContainer = document.getElementById('hearts');
+const overlay = document.getElementById('overlay');
+const letterTitle = document.getElementById('letterTitle');
+const letterText = document.getElementById('letterText');
+const letterPhoto = document.getElementById('letterPhoto');
+const closeBtn = document.getElementById('closeBtn');
+
+// grade de pixels do coração (grade 11 colunas x 10 linhas)
+const HEART_PIXELS = [
+  [2,0],[3,0],[7,0],[8,0],
+  [1,1],[2,1],[3,1],[4,1],[6,1],[7,1],[8,1],[9,1],
+  [0,2],[1,2],[2,2],[3,2],[4,2],[5,2],[6,2],[7,2],[8,2],[9,2],[10,2],
+  [0,3],[1,3],[2,3],[3,3],[4,3],[5,3],[6,3],[7,3],[8,3],[9,3],[10,3],
+  [0,4],[1,4],[2,4],[3,4],[4,4],[5,4],[6,4],[7,4],[8,4],[9,4],[10,4],
+  [1,5],[2,5],[3,5],[4,5],[5,5],[6,5],[7,5],[8,5],[9,5],
+  [2,6],[3,6],[4,6],[5,6],[6,6],[7,6],[8,6],
+  [3,7],[4,7],[5,7],[6,7],[7,7],
+  [4,8],[5,8],[6,8],
+  [5,9]
+];
+
+function criarHeartSVG(){
+  const ns = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(ns, "svg");
+  svg.setAttribute("viewBox", "0 0 11 10");
+  HEART_PIXELS.forEach(([x, y]) => {
+    const rect = document.createElementNS(ns, "rect");
+    rect.setAttribute("class", "heart-pixel");
+    rect.setAttribute("x", x);
+    rect.setAttribute("y", y);
+    rect.setAttribute("width", 1);
+    rect.setAttribute("height", 1);
+    rect.setAttribute("fill", "#ff2d6b");
+    svg.appendChild(rect);
+  });
+  return svg;
+}
+
+// cria os 3 corações na tela
+CORACOES.forEach((item, i) => {
+  const card = document.createElement('div');
+  card.className = 'heart-card';
+  card.id = 'card-' + i;
+
+  const btn = document.createElement('button');
+  btn.className = 'heart-btn';
+  btn.id = 'heart-' + i;
+  btn.setAttribute('aria-label', 'Abrir ' + item.titulo);
+
+  const wrap = document.createElement('div');
+  wrap.className = 'heart-wrap';
+  wrap.appendChild(criarHeartSVG());
+
+  const label = document.createElement('span');
+  label.className = 'heart-wrap__label';
+  label.textContent = item.titulo;
+  wrap.appendChild(label);
+
+  btn.appendChild(wrap);
+  card.appendChild(btn);
+  heartsContainer.appendChild(card);
+
+  btn.addEventListener('click', () => {
+    card.classList.add('is-opened');
+    abrirCarta(i);
+  });
+});
+
+function abrirCarta(i){
+  const item = CORACOES[i];
+  letterTitle.textContent = item.titulo;
+  letterText.textContent = item.texto;
+  letterPhoto.src = item.foto;
+  letterPhoto.alt = item.titulo;
+  overlay.classList.add('is-visible');
+}
+
+function fecharCarta(){
+  overlay.classList.remove('is-visible');
+}
+
+closeBtn.addEventListener('click', fecharCarta);
+overlay.addEventListener('click', (e) => {
+  if (e.target === overlay) fecharCarta();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') fecharCarta();
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,306 @@
+/* =========================================================
+   LUÍSA, AMOR DA MINHA VIDA — 3 corações em pixel art
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+:root{
+  --pink-bg-1: #ffe3f1;
+  --pink-bg-2: #ffcbe6;
+  --pink-deep: #ff4f8e;
+  --pink-mid:  #ff85b3;
+  --pink-line: #7a2354;
+  --pink-dark: #5b1a3d;
+  --pink-paper: #fff2f8;
+  --pink-shadow: #d94f92;
+  --gold: #ffe27a;
+  --gold-dark: #d9a53c;
+  --heart-red: #ff2d6b;
+  --heart-glow: #ff9dc0;
+  --white: #ffffff;
+
+  --font-title: 'Press Start 2P', monospace;
+  --font-body: 'VT323', monospace;
+}
+
+*{ box-sizing: border-box; }
+
+html, body{
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body{
+  font-family: var(--font-body);
+  color: var(--pink-dark);
+  background: var(--pink-bg-1);
+  background-image:
+    radial-gradient(circle at 20% 20%, var(--pink-bg-2) 2px, transparent 2px),
+    radial-gradient(circle at 60% 70%, var(--pink-bg-2) 2px, transparent 2px),
+    radial-gradient(circle at 85% 30%, var(--pink-bg-2) 2px, transparent 2px);
+  background-size: 60px 60px, 80px 80px, 70px 70px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 16px 80px;
+  overflow-x: hidden;
+}
+
+/* ---------- Cabeçalho ---------- */
+
+.hero{
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.hero__title{
+  font-family: var(--font-title);
+  font-size: 22px;
+  line-height: 1.8;
+  color: var(--white);
+  text-shadow:
+    3px 0 var(--pink-line),
+    -3px 0 var(--pink-line),
+    0 3px var(--pink-line),
+    0 -3px var(--pink-line),
+    3px 3px var(--pink-line),
+    -3px -3px var(--pink-line),
+    3px -3px var(--pink-line),
+    -3px 3px var(--pink-line),
+    6px 6px 0 var(--pink-shadow);
+  letter-spacing: 2px;
+  margin: 0 0 16px;
+}
+
+.hero__subtitle{
+  font-family: var(--font-body);
+  font-size: 22px;
+  color: var(--pink-line);
+  margin: 0;
+}
+
+.hero__sparkles{
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 20px;
+}
+
+/* estrelinha pixel (grade 5x5) */
+.pixel-star{
+  --s: 5px;
+  width: var(--s);
+  height: var(--s);
+  background: var(--gold);
+  position: relative;
+  box-shadow:
+    calc(var(--s)*2) calc(var(--s)*0) var(--gold),
+    calc(var(--s)*0) calc(var(--s)*2) var(--gold),
+    calc(var(--s)*1) calc(var(--s)*2) var(--gold-dark),
+    calc(var(--s)*2) calc(var(--s)*1) var(--gold-dark),
+    calc(var(--s)*2) calc(var(--s)*2) var(--gold),
+    calc(var(--s)*3) calc(var(--s)*2) var(--gold-dark),
+    calc(var(--s)*4) calc(var(--s)*2) var(--gold),
+    calc(var(--s)*2) calc(var(--s)*3) var(--gold-dark),
+    calc(var(--s)*2) calc(var(--s)*4) var(--gold);
+}
+
+/* ---------- Grade de corações ---------- */
+
+.hearts-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 48px;
+  max-width: 940px;
+  width: 100%;
+}
+
+.heart-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.heart-btn{
+  background: none;
+  border: none;
+  padding: 18px;
+  cursor: pointer;
+  transition: transform .2s ease, filter .2s ease;
+}
+
+.heart-btn:hover{
+  transform: scale(1.08) translateY(-4px);
+}
+
+.heart-btn:active{
+  transform: scale(0.96);
+}
+
+.heart-btn:focus-visible{
+  outline: 3px dashed var(--pink-line);
+  outline-offset: 8px;
+}
+
+/* coração grande em pixel art (SVG estático, com contorno preto) */
+.heart-wrap{
+  position: relative;
+  width: 176px;
+  height: 160px;
+}
+
+.heart-wrap svg{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.heart-wrap .heart-pixel{
+  stroke: #000000;
+  stroke-width: 0.06;
+}
+
+/* texto branco centralizado dentro do coração */
+.heart-wrap__label{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 30px;
+  text-align: center;
+  font-family: var(--font-title);
+  font-size: 10px;
+  line-height: 1.6;
+  color: var(--white);
+  text-shadow:
+    1px 1px 0 #000,
+    -1px 1px 0 #000,
+    1px -1px 0 #000,
+    -1px -1px 0 #000;
+  pointer-events: none;
+}
+
+.heart-card.is-opened .heart-wrap{
+  opacity: 0.75;
+}
+
+/* ---------- Modal / Carta ---------- */
+
+.overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(91, 26, 61, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+  z-index: 100;
+}
+
+.overlay.is-visible{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.letter-card{
+  background: var(--pink-paper);
+  border: 6px solid var(--pink-line);
+  box-shadow: 10px 10px 0 var(--pink-shadow);
+  max-width: 480px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 24px;
+  position: relative;
+  transform: scale(.85) translateY(20px);
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+}
+
+.overlay.is-visible .letter-card{
+  transform: scale(1) translateY(0);
+}
+
+.letter-card__close{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  background: var(--pink-deep);
+  border: 3px solid var(--pink-line);
+  color: var(--white);
+  font-family: var(--font-title);
+  font-size: 12px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--pink-shadow);
+}
+
+.letter-card__close:hover{
+  background: var(--pink-shadow);
+}
+
+.letter-card__title{
+  font-family: var(--font-title);
+  font-size: 13px;
+  color: var(--pink-line);
+  margin: 0 0 16px;
+  padding-right: 30px;
+  line-height: 1.6;
+}
+
+.letter-card__photo-frame{
+  border: 4px solid var(--pink-line);
+  background: var(--white);
+  padding: 6px;
+  margin-bottom: 16px;
+  box-shadow: 5px 5px 0 var(--gold);
+}
+
+.letter-card__photo{
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 320px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.letter-card__text{
+  font-family: var(--font-body);
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--pink-dark);
+  white-space: pre-line;
+  margin: 0;
+}
+
+.letter-card__footer{
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ---------- Rodapé ---------- */
+
+.page-footer{
+  margin-top: 64px;
+  font-family: var(--font-body);
+  font-size: 18px;
+  color: var(--pink-line);
+  text-align: center;
+}
+
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 480px){
+  .hero__title{ font-size: 16px; }
+  .hearts-grid{ gap: 36px; }
+  .pixel-heart-big{ --s: 6px; }
+}
