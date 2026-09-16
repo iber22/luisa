@@ -4,25 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minha Princesa ❤️</title>
-
+  <title>Te amo, mi amoreeee ❤️</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+
   <header class="hero">
     <h1 class="hero__title">
       Minha Princesa<br>
-      <em>
-        Escrevendo um pouco mais sobre a pessoa incrível que você é
-        e tudo o que faz por mim
-      </em><br>
+      <em>Escrevendo um pouco mais sobre a pessoa incrível que você é e tudo o que faz por mim</em><br>
       Eu te amo muito
     </h1>
 
-    <p class="hero__subtitle">
-      Clique em cada coração para abrir
-    </p>
+    <p class="hero__subtitle">Clique em cada coração para abrir</p>
 
     <div class="hero__sparkles">
       <div class="pixel-star"></div>
@@ -31,79 +25,135 @@
     </div>
   </header>
 
-  <main id="hearts" class="hearts-container"></main>
+  <main class="hearts-grid" id="hearts">
+    <!-- Os quatro corações são criados automaticamente pelo script -->
+  </main>
 
-  <div id="letterModal" class="modal-overlay" aria-hidden="true">
-    <div class="letter-modal" role="dialog" aria-modal="true" aria-labelledby="letterTitle">
+  <!-- Modal da carta -->
+  <div class="overlay" id="overlay">
+    <div
+      class="letter-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="letterTitle"
+    >
       <button
-        id="closeModal"
-        class="modal-close"
-        type="button"
+        class="letter-card__close"
+        id="closeBtn"
         aria-label="Fechar carta"
+        type="button"
       >
-        ×
+        X
       </button>
 
-      <h2 id="letterTitle"></h2>
+      <h2 class="letter-card__title" id="letterTitle">
+        Título
+      </h2>
 
-      <img
-        id="letterPhoto"
-        src=""
-        alt="Foto especial"
-        class="letter-photo"
-      >
+      <div class="letter-card__photo-frame">
+        <img
+          class="letter-card__photo"
+          id="letterPhoto"
+          src=""
+          alt="Foto da carta"
+        >
+      </div>
 
-      <div id="letterText" class="letter-text"></div>
+      <p class="letter-card__text" id="letterText"></p>
+
+      <div class="letter-card__footer">
+        <div class="pixel-star"></div>
+      </div>
     </div>
   </div>
 
-  <footer class="footer">
+  <footer class="page-footer">
     Pra melhor namorada do mundo, mesmo sem ser oficial ❤️
   </footer>
 
   <script>
+    /* =========================================================
+       ❤️ TEXTOS E FOTOS DOS CORAÇÕES
+
+       As fotos devem estar na mesma pasta deste arquivo:
+       index.html
+       style.css
+       coracao1.jpg
+       coracao2.jpg
+       coracao3.jpg
+       coracao4.jpg
+       ========================================================= */
+
     const CORACOES = [
+
+      /* -------------------------------------------------------
+         CORAÇÃO 1
+         ------------------------------------------------------- */
+
       {
-        titulo: "O começo de tudo ❤️",
-        foto: "coracao1.jpg",
-        texto: `Luísa,
+        titulo: "Quem a Luísa é pra mim?",
 
-        Desde que você chegou, tudo ficou mais bonito. Até os dias difíceis parecem mais leves quando tenho você comigo.
+        texto: `Desde que você chegou, não tem um dia em que eu não acorde com um sorriso no rosto. Eu sempre falo que existe um Pedro antes e um Pedro depois de você. A mudança é nítida.
 
-        Obrigado por ser meu porto seguro, meu sorriso favorito e uma das maiores bênçãos que Jesus colocou na minha vida.
+Acho que, se eu fosse definir quem você é para mim em uma palavra, eu falaria: tudo. Meus dias são coloridos com você neles, e minhas semanas, que antes eram massivas e cansativas, se tornaram leves, pois a garota mais incrível do mundo é a parte mais importante delas.
 
-        Eu te amo muito! ❤️`
+Você é o sol loiro (agora moreno kkkkk) que ilumina a minha vida. Você me coloca para cima, faz de tudo para tirar um sorriso do meu rosto e é a garota dos olhos de Jesus. Você é tão cheia do amor dEle que esse amor inundou a minha vida também, e isso é lindo!
+
+Eu sou apaixonado por cada detalhe seu, cada detalhe da sua personalidade e cada detalhe presente em você. Eu poderia citar um zilhão de coisas, como, por exemplo, o jeito que seus olhos brilham quando me veem. Eu sou apaixonado por eles, pois, toda vez que olho para eles, vejo o brilho do Espírito Santo.
+
+Você é luz. Você é o amor da minha vida. Meu amor por você é como as estações: elas mudam, se renovam e se adaptam, mas nunca deixam de existir.
+
+Você é incrível, meu amor. Nunca se esqueça disso!`,
+
+        foto: "coracao1.jpg"
       },
 
+
+      /* -------------------------------------------------------
+         CORAÇÃO 2
+         ------------------------------------------------------- */
+
       {
-        titulo: "Tudo o que você mudou em mim 💗",
-        foto: "coracao2.jpg",
-        texto: `Amor,
+        titulo: "Clique e tenha uma surpresa",
 
-        Você mudou a minha forma de enxergar a vida, o amor e até a mim mesmo.
+        texto: `A única vez que chorei por medo de perder alguém foi por você. Eu olhava para aquela sinuca de bico em que o nosso relacionamento estava e só pensava que, se você quisesse abandonar o barco, estaria totalmente no seu direito, pois você não precisava passar por aquilo por causa de um menino que, até então, era inseguro, não sabia confiar e achava que, a qualquer dia, poderia aparecer alguém 100 vezes melhor que ele.
 
-        Com você, aprendi que amar também é cuidar, ouvir, respeitar, ter paciência e escolher a mesma pessoa todos os dias.
+Mas você escolheu ficar. Escolheu me dar a mão e enfrentar tudo aquilo comigo. Foi ali que percebi que você é a mulher que Deus preparou para mim, o amor da minha vida!
 
-        Obrigado por me ensinar tanto e por me mostrar que o amor pode ser leve, verdadeiro e cheio de Deus.
+Em toda a história, jamais existirá palavra capaz de definir a minha gratidão a Deus por colocar você na minha vida. Você chegou do nada, da forma mais aleatória possível, me deu um pé na bunda e depois se tornou tudo para mim.
 
-        Eu sou muito feliz por ter você. ❤️`
+Meu amor por ti, minha princesa, é a coisa mais linda que eu já senti. Ele é inefável. Essa é a única palavra que chegou perto de definir o meu amor por ti. Inefável é algo extraordinário, sublime ou intenso a ponto de não poder ser expresso ou descrito com palavras.
+
+Obrigado por tudo, meu bem. Você transformou a minha vida. Hoje eu sou feliz, ando de cabeça erguida e sigo ansioso para passar cada momento da minha vida com você.
+
+Eu te vivo!`,
+
+        foto: "coracao2.jpg"
       },
 
+
+      /* -------------------------------------------------------
+         CORAÇÃO 3
+         ------------------------------------------------------- */
+
       {
-        titulo: "Sobre você ser tão incrível 💕",
-        foto: "coracao3.jpg",
-        texto: `Minha princesa,
+        titulo: "Clique e tenha uma surpresa",
 
-        Às vezes, eu fico tentando encontrar palavras que sejam capazes de explicar o quanto você é incrível, mas parece que nenhuma é suficiente.
+        texto: `EU TE AMO, E ESSA É SÓ MAIS UMA FORMA QUE EU BUSCO PARA ALEGRAR O SEU DIA.
 
-        Você é linda por fora, mas é ainda mais bonita por dentro. Seu coração, sua dedicação, sua força, seu jeito de cuidar e sua forma de amar fazem de você alguém completamente especial.
+MESMO ESTANDO LONGE, EU BUSCO ESTAR PERTO.
 
-        Eu admiro cada detalhe seu e agradeço a Deus por poder fazer parte da sua vida.
+EU TE AMO MIL MILHÕES, TRILHÕES, ZILHÕES!!!!!!!!!!!!!!`,
 
-        Você é uma das minhas maiores alegrias. ❤️`
+        foto: "coracao3.jpg"
       },
 
-      {
+
+      /* -------------------------------------------------------
+         CORAÇÃO 4 — 6 MESES
+         ------------------------------------------------------- */
+
+ {
         titulo: "6 meses com você 💖",
         foto: "coracao4.jpg",
         texto: `Amor, nesses 6 meses com você, uma nova versão de mim nasceu. Eu aprendi inúmeras coisas, como, por exemplo, o amor.
@@ -142,39 +192,70 @@
       }
     ];
 
-    const HEART_PIXELS = [
-      [2, 0], [3, 0], [6, 0], [7, 0],
-      [1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1], [8, 1],
-      [0, 2], [1, 2], [2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2], [8, 2], [9, 2],
-      [0, 3], [1, 3], [2, 3], [3, 3], [4, 3], [5, 3], [6, 3], [7, 3], [8, 3], [9, 3],
-      [1, 4], [2, 4], [3, 4], [4, 4], [5, 4], [6, 4], [7, 4], [8, 4],
-      [2, 5], [3, 5], [4, 5], [5, 5], [6, 5], [7, 5],
-      [3, 6], [4, 6], [5, 6], [6, 6],
-      [4, 7], [5, 7]
-    ];
+    /* =========================================================
+       ELEMENTOS DA PÁGINA
+       ========================================================= */
 
     const heartsContainer = document.getElementById("hearts");
-    const letterModal = document.getElementById("letterModal");
+    const overlay = document.getElementById("overlay");
     const letterTitle = document.getElementById("letterTitle");
-    const letterPhoto = document.getElementById("letterPhoto");
     const letterText = document.getElementById("letterText");
-    const closeModalButton = document.getElementById("closeModal");
+    const letterPhoto = document.getElementById("letterPhoto");
+    const closeBtn = document.getElementById("closeBtn");
+
+    /* =========================================================
+       GRADE DE PIXELS DO CORAÇÃO
+       ========================================================= */
+
+    const HEART_PIXELS = [
+      [2, 0], [3, 0], [7, 0], [8, 0],
+
+      [1, 1], [2, 1], [3, 1], [4, 1],
+      [6, 1], [7, 1], [8, 1], [9, 1],
+
+      [0, 2], [1, 2], [2, 2], [3, 2], [4, 2],
+      [5, 2], [6, 2], [7, 2], [8, 2], [9, 2], [10, 2],
+
+      [0, 3], [1, 3], [2, 3], [3, 3], [4, 3],
+      [5, 3], [6, 3], [7, 3], [8, 3], [9, 3], [10, 3],
+
+      [0, 4], [1, 4], [2, 4], [3, 4], [4, 4],
+      [5, 4], [6, 4], [7, 4], [8, 4], [9, 4], [10, 4],
+
+      [1, 5], [2, 5], [3, 5], [4, 5], [5, 5],
+      [6, 5], [7, 5], [8, 5], [9, 5],
+
+      [2, 6], [3, 6], [4, 6], [5, 6],
+      [6, 6], [7, 6], [8, 6],
+
+      [3, 7], [4, 7], [5, 7], [6, 7], [7, 7],
+
+      [4, 8], [5, 8], [6, 8],
+
+      [5, 9]
+    ];
+
+    /* =========================================================
+       CRIAÇÃO DO CORAÇÃO EM PIXEL ART
+       ========================================================= */
 
     function criarHeartSVG() {
-      const svgNS = "http://www.w3.org/2000/svg";
+      const ns = "http://www.w3.org/2000/svg";
 
-      const svg = document.createElementNS(svgNS, "svg");
-      svg.setAttribute("viewBox", "0 0 10 8");
-      svg.setAttribute("class", "pixel-heart");
+      const svg = document.createElementNS(ns, "svg");
+
+      svg.setAttribute("viewBox", "0 0 11 10");
       svg.setAttribute("aria-hidden", "true");
 
       HEART_PIXELS.forEach(([x, y]) => {
-        const rect = document.createElementNS(svgNS, "rect");
+        const rect = document.createElementNS(ns, "rect");
 
+        rect.setAttribute("class", "heart-pixel");
         rect.setAttribute("x", x);
         rect.setAttribute("y", y);
-        rect.setAttribute("width", "1");
-        rect.setAttribute("height", "1");
+        rect.setAttribute("width", 1);
+        rect.setAttribute("height", 1);
+        rect.setAttribute("fill", "#ff2d6b");
 
         svg.appendChild(rect);
       });
@@ -182,76 +263,101 @@
       return svg;
     }
 
-    function criarCoracoes() {
-      CORACOES.forEach((item, index) => {
-        const heartCard = document.createElement("button");
+    /* =========================================================
+       CRIA OS QUATRO CORAÇÕES NA TELA
+       ========================================================= */
 
-        heartCard.type = "button";
-        heartCard.className = "heart-card";
-        heartCard.setAttribute(
-          "aria-label",
-          `Abrir carta: ${item.titulo}`
-        );
+    CORACOES.forEach((item, i) => {
+      const card = document.createElement("div");
 
-        const heartWrapper = document.createElement("div");
-        heartWrapper.className = "heart-wrapper";
+      card.className = "heart-card";
+      card.id = "card-" + i;
 
-        const heartNumber = document.createElement("span");
-        heartNumber.className = "heart-number";
-        heartNumber.textContent = index + 1;
+      const btn = document.createElement("button");
 
-        const heartTitle = document.createElement("h2");
-        heartTitle.className = "heart-title";
-        heartTitle.textContent = item.titulo;
+      btn.className = "heart-btn";
+      btn.id = "heart-" + i;
+      btn.type = "button";
 
-        heartWrapper.appendChild(criarHeartSVG());
-        heartWrapper.appendChild(heartNumber);
+      btn.setAttribute(
+        "aria-label",
+        "Abrir " + item.titulo
+      );
 
-        heartCard.appendChild(heartWrapper);
-        heartCard.appendChild(heartTitle);
+      const wrap = document.createElement("div");
 
-        heartCard.addEventListener("click", () => {
-          abrirCarta(item);
-        });
+      wrap.className = "heart-wrap";
+      wrap.appendChild(criarHeartSVG());
 
-        heartsContainer.appendChild(heartCard);
+      const label = document.createElement("span");
+
+      label.className = "heart-wrap__label";
+      label.textContent = item.titulo;
+
+      wrap.appendChild(label);
+      btn.appendChild(wrap);
+      card.appendChild(btn);
+      heartsContainer.appendChild(card);
+
+      btn.addEventListener("click", () => {
+        card.classList.add("is-opened");
+        abrirCarta(i);
       });
-    }
+    });
 
-    function abrirCarta(item) {
+    /* =========================================================
+       ABRIR CARTA
+       ========================================================= */
+
+    function abrirCarta(i) {
+      const item = CORACOES[i];
+
       letterTitle.textContent = item.titulo;
-      letterPhoto.src = item.foto;
-      letterPhoto.alt = `Foto da carta: ${item.titulo}`;
       letterText.textContent = item.texto;
 
-      letterModal.classList.add("is-open");
-      letterModal.setAttribute("aria-hidden", "false");
-      document.body.classList.add("modal-open");
+      // As imagens estão soltas na mesma pasta do index.html
+      letterPhoto.src = item.foto;
+      letterPhoto.alt = item.titulo;
 
-      closeModalButton.focus();
+      overlay.classList.add("is-visible");
+      closeBtn.focus();
     }
+
+    /* =========================================================
+       FECHAR CARTA
+       ========================================================= */
 
     function fecharCarta() {
-      letterModal.classList.remove("is-open");
-      letterModal.setAttribute("aria-hidden", "true");
-      document.body.classList.remove("modal-open");
+      overlay.classList.remove("is-visible");
     }
 
-    closeModalButton.addEventListener("click", fecharCarta);
+    closeBtn.addEventListener("click", fecharCarta);
 
-    letterModal.addEventListener("click", (event) => {
-      if (event.target === letterModal) {
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) {
         fecharCarta();
       }
     });
 
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
         fecharCarta();
       }
     });
 
-    criarCoracoes();
+    /* =========================================================
+       AVISO CASO A FOTO NÃO SEJA ENCONTRADA
+       ========================================================= */
+
+    letterPhoto.addEventListener("error", () => {
+      console.error(
+        "Não foi possível carregar a imagem:",
+        letterPhoto.src
+      );
+
+      letterPhoto.alt = "Imagem não encontrada: " + letterPhoto.src;
+    });
   </script>
+
 </body>
 </html>
