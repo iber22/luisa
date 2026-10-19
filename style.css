@@ -1,37 +1,32 @@
-/* =========================================================
-   LUÍSA, AMOR DA MINHA VIDA — 3 corações em pixel art
-   ========================================================= */
-
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
-:root{
+:root {
   --pink-bg-1: #ffe3f1;
   --pink-bg-2: #ffcbe6;
   --pink-deep: #ff4f8e;
-  --pink-mid:  #ff85b3;
   --pink-line: #7a2354;
   --pink-dark: #5b1a3d;
   --pink-paper: #fff2f8;
   --pink-shadow: #d94f92;
   --gold: #ffe27a;
   --gold-dark: #d9a53c;
-  --heart-red: #ff2d6b;
-  --heart-glow: #ff9dc0;
   --white: #ffffff;
-
   --font-title: 'Press Start 2P', monospace;
   --font-body: 'VT323', monospace;
 }
 
-*{ box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html, body{
+html,
+body {
   margin: 0;
   padding: 0;
   min-height: 100%;
 }
 
-body{
+body {
   font-family: var(--font-body);
   color: var(--pink-dark);
   background: var(--pink-bg-1);
@@ -48,14 +43,14 @@ body{
   overflow-x: hidden;
 }
 
-/* ---------- Cabeçalho ---------- */
-
-.hero{
+.hero {
+  width: 100%;
+  max-width: 940px;
   text-align: center;
   margin-bottom: 56px;
 }
 
-.hero__title{
+.hero__title {
   font-family: var(--font-title);
   font-size: 22px;
   line-height: 1.8;
@@ -72,32 +67,37 @@ body{
     6px 6px 0 var(--pink-shadow);
   letter-spacing: 2px;
   margin: 0 0 16px;
+  overflow-wrap: anywhere;
 }
 
-.hero__subtitle{
-  font-family: var(--font-body);
+.hero__title em {
+  font-size: .55em;
+  font-style: normal;
+  display: inline-block;
+}
+
+.hero__subtitle {
   font-size: 22px;
   color: var(--pink-line);
   margin: 0;
 }
 
-.hero__sparkles{
+.hero__sparkles {
   display: flex;
   justify-content: center;
   gap: 18px;
   margin-top: 20px;
 }
 
-/* estrelinha pixel (grade 5x5) */
-.pixel-star{
+.pixel-star {
   --s: 5px;
   width: var(--s);
   height: var(--s);
   background: var(--gold);
   position: relative;
   box-shadow:
-    calc(var(--s)*2) calc(var(--s)*0) var(--gold),
-    calc(var(--s)*0) calc(var(--s)*2) var(--gold),
+    calc(var(--s)*2) 0 var(--gold),
+    0 calc(var(--s)*2) var(--gold),
     calc(var(--s)*1) calc(var(--s)*2) var(--gold-dark),
     calc(var(--s)*2) calc(var(--s)*1) var(--gold-dark),
     calc(var(--s)*2) calc(var(--s)*2) var(--gold),
@@ -107,24 +107,31 @@ body{
     calc(var(--s)*2) calc(var(--s)*4) var(--gold);
 }
 
-/* ---------- Grade de corações ---------- */
-
-.hearts-grid{
+/* Grade: todos os corações com o mesmo tamanho */
+.hearts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 48px;
-  max-width: 940px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 36px;
   width: 100%;
+  max-width: 940px;
+  align-items: stretch;
 }
 
-.heart-card{
+.heart-card {
+  min-width: 0;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 18px;
+  text-align: center;
 }
 
-.heart-btn{
+.heart-btn {
+  width: 100%;
+  max-width: 220px;
+  min-height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: none;
   border: none;
   padding: 18px;
@@ -132,39 +139,38 @@ body{
   transition: transform .2s ease, filter .2s ease;
 }
 
-.heart-btn:hover{
-  transform: scale(1.08) translateY(-4px);
+.heart-btn:hover {
+  transform: scale(1.05) translateY(-4px);
 }
 
-.heart-btn:active{
-  transform: scale(0.96);
+.heart-btn:active {
+  transform: scale(.96);
 }
 
-.heart-btn:focus-visible{
+.heart-btn:focus-visible {
   outline: 3px dashed var(--pink-line);
-  outline-offset: 8px;
+  outline-offset: 4px;
 }
 
-/* coração grande em pixel art (SVG estático, com contorno preto) */
-.heart-wrap{
+.heart-wrap {
   position: relative;
   width: 176px;
   height: 160px;
+  flex: 0 0 176px;
 }
 
-.heart-wrap svg{
+.heart-wrap svg {
+  display: block;
   width: 100%;
   height: 100%;
-  display: block;
 }
 
-.heart-wrap .heart-pixel{
-  stroke: #000000;
-  stroke-width: 0.06;
+.heart-wrap .heart-pixel {
+  stroke: #000;
+  stroke-width: .06;
 }
 
-/* texto branco centralizado dentro do coração */
-.heart-wrap__label{
+.heart-wrap__label {
   position: absolute;
   inset: 0;
   display: flex;
@@ -172,9 +178,10 @@ body{
   justify-content: center;
   padding: 0 30px;
   text-align: center;
+  overflow-wrap: anywhere;
   font-family: var(--font-title);
   font-size: 10px;
-  line-height: 1.6;
+  line-height: 1.5;
   color: var(--white);
   text-shadow:
     1px 1px 0 #000,
@@ -184,16 +191,15 @@ body{
   pointer-events: none;
 }
 
-.heart-card.is-opened .heart-wrap{
-  opacity: 0.75;
+.heart-card.is-opened .heart-wrap {
+  opacity: .75;
 }
 
-/* ---------- Modal / Carta ---------- */
-
-.overlay{
+/* Modal */
+.overlay {
   position: fixed;
   inset: 0;
-  background: rgba(91, 26, 61, 0.6);
+  background: rgba(91, 26, 61, .6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -204,12 +210,12 @@ body{
   z-index: 100;
 }
 
-.overlay.is-visible{
+.overlay.is-visible {
   opacity: 1;
   pointer-events: auto;
 }
 
-.letter-card{
+.letter-card {
   background: var(--pink-paper);
   border: 6px solid var(--pink-line);
   box-shadow: 10px 10px 0 var(--pink-shadow);
@@ -220,14 +226,14 @@ body{
   padding: 24px;
   position: relative;
   transform: scale(.85) translateY(20px);
-  transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+  transition: transform .3s cubic-bezier(.34, 1.56, .64, 1);
 }
 
-.overlay.is-visible .letter-card{
+.overlay.is-visible .letter-card {
   transform: scale(1) translateY(0);
 }
 
-.letter-card__close{
+.letter-card__close {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -242,20 +248,17 @@ body{
   box-shadow: 3px 3px 0 var(--pink-shadow);
 }
 
-.letter-card__close:hover{
-  background: var(--pink-shadow);
-}
-
-.letter-card__title{
+.letter-card__title {
   font-family: var(--font-title);
   font-size: 13px;
   color: var(--pink-line);
   margin: 0 0 16px;
   padding-right: 30px;
   line-height: 1.6;
+  overflow-wrap: anywhere;
 }
 
-.letter-card__photo-frame{
+.letter-card__photo-frame {
   border: 4px solid var(--pink-line);
   background: var(--white);
   padding: 6px;
@@ -263,7 +266,7 @@ body{
   box-shadow: 5px 5px 0 var(--gold);
 }
 
-.letter-card__photo{
+.letter-card__photo {
   display: block;
   width: 100%;
   height: auto;
@@ -272,24 +275,23 @@ body{
   image-rendering: pixelated;
 }
 
-.letter-card__text{
+.letter-card__text {
   font-family: var(--font-body);
   font-size: 20px;
   line-height: 1.5;
   color: var(--pink-dark);
   white-space: pre-line;
+  overflow-wrap: anywhere;
   margin: 0;
 }
 
-.letter-card__footer{
+.letter-card__footer {
   margin-top: 18px;
   display: flex;
   justify-content: center;
 }
 
-/* ---------- Rodapé ---------- */
-
-.page-footer{
+.page-footer {
   margin-top: 64px;
   font-family: var(--font-body);
   font-size: 18px;
@@ -297,10 +299,55 @@ body{
   text-align: center;
 }
 
-/* ---------- Responsivo ---------- */
+/* Responsivo */
+@media (max-width: 700px) {
+  .hearts-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
 
-@media (max-width: 480px){
-  .hero__title{ font-size: 16px; }
-  .hearts-grid{ gap: 36px; }
-  .pixel-heart-big{ --s: 6px; }
+  .heart-btn {
+    min-height: 190px;
+    padding: 8px;
+  }
+
+  .heart-wrap {
+    width: 150px;
+    height: 137px;
+    flex-basis: 150px;
+  }
+
+  .heart-wrap__label {
+    padding: 0 24px;
+    font-size: 8px;
+  }
+
+  .hero__title {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  body {
+    padding: 28px 10px 56px;
+  }
+
+  .hearts-grid {
+    gap: 10px;
+  }
+
+  .heart-wrap {
+    width: 132px;
+    height: 120px;
+    flex-basis: 132px;
+  }
+
+  .heart-wrap__label {
+    padding: 0 20px;
+    font-size: 7px;
+  }
+
+  .letter-card {
+    padding: 18px;
+  }
 }
