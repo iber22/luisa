@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -25,38 +24,16 @@
     </div>
   </header>
 
-  <main class="hearts-grid" id="hearts">
-    <!-- Os quatro corações são criados automaticamente pelo script -->
-  </main>
+  <main class="hearts-grid" id="hearts"></main>
 
-  <!-- Modal da carta -->
   <div class="overlay" id="overlay">
-    <div
-      class="letter-card"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="letterTitle"
-    >
-      <button
-        class="letter-card__close"
-        id="closeBtn"
-        aria-label="Fechar carta"
-        type="button"
-      >
-        X
-      </button>
+    <div class="letter-card" role="dialog" aria-modal="true" aria-labelledby="letterTitle">
+      <button class="letter-card__close" id="closeBtn" aria-label="Fechar carta" type="button">X</button>
 
-      <h2 class="letter-card__title" id="letterTitle">
-        Título
-      </h2>
+      <h2 class="letter-card__title" id="letterTitle">Título</h2>
 
       <div class="letter-card__photo-frame">
-        <img
-          class="letter-card__photo"
-          id="letterPhoto"
-          src=""
-          alt="Foto da carta"
-        >
+        <img class="letter-card__photo" id="letterPhoto" src="" alt="Foto da carta">
       </div>
 
       <p class="letter-card__text" id="letterText"></p>
@@ -72,27 +49,9 @@
   </footer>
 
   <script>
-    /* =========================================================
-       ❤️ TEXTOS E FOTOS DOS CORAÇÕES
-
-       As fotos devem estar na mesma pasta deste arquivo:
-       index.html
-       style.css
-       coracao1.jpg
-       coracao2.jpg
-       coracao3.jpg
-       coracao4.jpg
-       ========================================================= */
-
     const CORACOES = [
-
-      /* -------------------------------------------------------
-         CORAÇÃO 1
-         ------------------------------------------------------- */
-
       {
         titulo: "Quem a Luísa é pra mim?",
-
         texto: `Desde que você chegou, não tem um dia em que eu não acorde com um sorriso no rosto. Eu sempre falo que existe um Pedro antes e um Pedro depois de você. A mudança é nítida.
 
 Acho que, se eu fosse definir quem você é para mim em uma palavra, eu falaria: tudo. Meus dias são coloridos com você neles, e minhas semanas, que antes eram massivas e cansativas, se tornaram leves, pois a garota mais incrível do mundo é a parte mais importante delas.
@@ -104,18 +63,11 @@ Eu sou apaixonado por cada detalhe seu, cada detalhe da sua personalidade e cada
 Você é luz. Você é o amor da minha vida. Meu amor por você é como as estações: elas mudam, se renovam e se adaptam, mas nunca deixam de existir.
 
 Você é incrível, meu amor. Nunca se esqueça disso!`,
-
         foto: "coracao1.jpg"
       },
 
-
-      /* -------------------------------------------------------
-         CORAÇÃO 2
-         ------------------------------------------------------- */
-
       {
         titulo: "Clique e tenha uma surpresa",
-
         texto: `A única vez que chorei por medo de perder alguém foi por você. Eu olhava para aquela sinuca de bico em que o nosso relacionamento estava e só pensava que, se você quisesse abandonar o barco, estaria totalmente no seu direito, pois você não precisava passar por aquilo por causa de um menino que, até então, era inseguro, não sabia confiar e achava que, a qualquer dia, poderia aparecer alguém 100 vezes melhor que ele.
 
 Mas você escolheu ficar. Escolheu me dar a mão e enfrentar tudo aquilo comigo. Foi ali que percebi que você é a mulher que Deus preparou para mim, o amor da minha vida!
@@ -127,78 +79,59 @@ Meu amor por ti, minha princesa, é a coisa mais linda que eu já senti. Ele é 
 Obrigado por tudo, meu bem. Você transformou a minha vida. Hoje eu sou feliz, ando de cabeça erguida e sigo ansioso para passar cada momento da minha vida com você.
 
 Eu te vivo!`,
-
         foto: "coracao2.jpg"
       },
 
-
-      /* -------------------------------------------------------
-         CORAÇÃO 3
-         ------------------------------------------------------- */
-
       {
         titulo: "Clique e tenha uma surpresa",
-
         texto: `EU TE AMO, E ESSA É SÓ MAIS UMA FORMA QUE EU BUSCO PARA ALEGRAR O SEU DIA.
 
 MESMO ESTANDO LONGE, EU BUSCO ESTAR PERTO.
 
 EU TE AMO MIL MILHÕES, TRILHÕES, ZILHÕES!!!!!!!!!!!!!!`,
-
         foto: "coracao3.jpg"
       },
 
-
-      /* -------------------------------------------------------
-         CORAÇÃO 4 — 6 MESES
-         ------------------------------------------------------- */
-
- {
+      {
         titulo: "6 meses com você 💖",
-        foto: "coracao4.jpg",
         texto: `Amor, nesses 6 meses com você, uma nova versão de mim nasceu. Eu aprendi inúmeras coisas, como, por exemplo, o amor.
 
-        Antes de você, o amor, para mim, era algo desconhecido. Eu nunca tinha sido amado verdadeiramente antes, mas, com você e Jesus no centro do nosso relacionamento, eu aprendi que:
+Antes de você, o amor, para mim, era algo desconhecido. Eu nunca tinha sido amado verdadeiramente antes, mas, com você e Jesus no centro do nosso relacionamento, eu aprendi que:
 
-        "O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha. Não maltrata, não procura os próprios interesses, não se ira, não guarda rancor. O amor não se alegra com a injustiça, mas se alegra com a verdade. Tudo sofre, tudo crê, tudo espera, tudo suporta."
+"O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha. Não maltrata, não procura os próprios interesses, não se ira, não guarda rancor. O amor não se alegra com a injustiça, mas se alegra com a verdade. Tudo sofre, tudo crê, tudo espera, tudo suporta."
 
-        1 Coríntios 13:4-7
+1 Coríntios 13:4-7
 
-        Você é a personificação viva desse versículo!
+Você é a personificação viva desse versículo!
 
-        Você me ensinou a enxergar uma versão minha que eu mesmo nunca tinha visto. Você enxergou, naquele "mendiguinho cabeludinho", como você chama kkkkk, um menino lindo que apenas não enxergava isso.
+Você me ensinou a enxergar uma versão minha que eu mesmo nunca tinha visto. Você enxergou, naquele "mendiguinho cabeludinho", como você chama kkkkk, um menino lindo que apenas não enxergava isso.
 
-        Quem seria o Pedro sem a Luísa, né? Você mudou a rota da minha vida — para melhor, óbvio. Você chegou do nada e, do nada, eu joguei meu coração na mesa. Falei tudo o que estava me machucando e, mesmo sem precisar, mesmo sem ser próxima, mesmo "me odiando", como você fala, você me tirou do lugar em que eu mais me sentia preso. Depois, tudo foi acontecendo e, hoje, não existe mais possibilidade de futuro sem você.
+Quem seria o Pedro sem a Luísa, né? Você mudou a rota da minha vida — para melhor, óbvio. Você chegou do nada e, do nada, eu joguei meu coração na mesa. Falei tudo o que estava me machucando e, mesmo sem precisar, mesmo sem ser próxima, mesmo "me odiando", como você fala, você me tirou do lugar em que eu mais me sentia preso. Depois, tudo foi acontecendo e, hoje, não existe mais possibilidade de futuro sem você.
 
-        O Pedro da Luísa é muito melhor que o de antes. Ele possui a mesma essência, porém sabe se amar e ser amado pela mulher mais linda que Jesus já fez: a mulher de Provérbios 31, a pessoa mais esforçada, mais dedicada e mais incrível que eu conheço.
+O Pedro da Luísa é muito melhor que o de antes. Ele possui a mesma essência, porém sabe se amar e ser amado pela mulher mais linda que Jesus já fez: a mulher de Provérbios 31, a pessoa mais esforçada, mais dedicada e mais incrível que eu conheço.
 
-        São 155 dias ao seu lado. São 155 dias em que eu aprendo, todos os dias, a ser um homem melhor por você. São 155 dias de uma vida inteira ao seu lado — porque você vai passar a vida comigo, não tem mais escolha.
+São 155 dias ao seu lado. São 155 dias em que eu aprendo, todos os dias, a ser um homem melhor por você. São 155 dias de uma vida inteira ao seu lado — porque você vai passar a vida comigo, não tem mais escolha.
 
-        São 155 dias em que eu te amo mais e mais a cada dia que passa, se é que isso é possível. Mas eu sei que é, porque me apaixono mais todos os dias pelo mesmo sorriso, pelas mesmas gracinhas — que, por mais que eu leve a sério a maioria delas, eu amo — e pelo mesmo cabelo, seja ele preso (GOAT), solto, liso ou com ondinhas, que eu amo também.
+São 155 dias em que eu te amo mais e mais a cada dia que passa, se é que isso é possível. Mas eu sei que é, porque me apaixono mais todos os dias pelo mesmo sorriso, pelas mesmas gracinhas — que, por mais que eu leve a sério a maioria delas, eu amo — e pelo mesmo cabelo, seja ele preso (GOAT), solto, liso ou com ondinhas, que eu amo também.
 
-        Eu me apaixono todos os dias pela pessoa que mais me aproxima de Jesus, pela pessoa em quem o Espírito Santo brilha todos os dias!!!!!!
+Eu me apaixono todos os dias pela pessoa que mais me aproxima de Jesus, pela pessoa em quem o Espírito Santo brilha todos os dias!!!!!!
 
-        A palavra "felicidade" tem um significado, mas, nesses 6 meses, você ressignificou essa palavra. A felicidade agora tem os olhos, o sorriso e o cabelo mais lindos. Eu fico imaginando, sabe? Cada detalhe seu é incrível. Você é uma das criações mais bonitas de Deus. Eu acho que Ele demorou 3 dias para criar cada fio do seu cabelo e cada pequena sardinha do seu rosto. Eu falo isso porque você é rica em detalhes, e eu tenho o prazer de conhecer cada um deles!
+A palavra "felicidade" tem um significado, mas, nesses 6 meses, você ressignificou essa palavra. A felicidade agora tem os olhos, o sorriso e o cabelo mais lindos. Eu fico imaginando, sabe? Cada detalhe seu é incrível. Você é uma das criações mais bonitas de Deus. Eu acho que Ele demorou 3 dias para criar cada fio do seu cabelo e cada pequena sardinha do seu rosto. Eu falo isso porque você é rica em detalhes, e eu tenho o prazer de conhecer cada um deles!
 
-        MEU AMOR, VOCÊ É INCRÍVEL, E, SE TE FALARAM ALGO QUE É DIFERENTE DISSO, É MENTIRA!
+MEU AMOR, VOCÊ É INCRÍVEL, E, SE TE FALARAM ALGO QUE É DIFERENTE DISSO, É MENTIRA!
 
-        VOCÊ É INCRIVELMENTE INCRÍVEL!
+VOCÊ É INCRIVELMENTE INCRÍVEL!
 
-        EU TE VIVO, EU TE AMO, EU TE RESPEITO, EU TE ADMIRO E AMO FAZER PARTE DA SUA VIDA.
+EU TE VIVO, EU TE AMO, EU TE RESPEITO, EU TE ADMIRO E AMO FAZER PARTE DA SUA VIDA.
 
-        Com amor,
+Com amor,
 
-        Pedro ❤️`
-      }
-      
-  
-      /* -------------------------------------------------------
-         CORAÇÃO 5
-         ------------------------------------------------------- */
+Pedro ❤️`,
+        foto: "coracao4.jpg"
+      },
 
       {
         titulo: "7 MESEEEEEEEEEEEEEEEEEEEES DE UMA VIDA TODA AO SEU LADO",
-
         texto: `Amor da minha vida, são 7 meses em que eu escolho você todos os dias, 7 meses em que eu me apaixono cada vez mais a cada dia que passa. São 183 dias em que você é a parte mais importante da minha vida.
 
 Eu peguei fama de chorão com você, mas é impossível não chorar lembrando e vivendo tudo o que você faz por mim. Eu nunca pensei que Jesus me apresentaria uma pessoa que faria tanto por mim: a princesa mais incrível que Ele já fez. E é incrível mesmo, tá? Em tooooodos os sentidos! De todas as maneiras possíveis, você é incrível.
@@ -218,16 +151,9 @@ E foi o brilho que eu vi também: o brilho de J - E - S - U - S.
 EU TE VIVO, LUÍSA FRANSESCHI BALVEDI, PRA TODO O SEMPRE! MEU AMOR NUNCA ACABA, ELE SÓ AUMENTA E VAI CONTINUAR AUMENTANDO TODOS OS DIAS DA MINHA VIDA!
 
 Eu te amo, meu amor! Muito, muito, muito, muito, do nosso jeitinho. Feliz 7 meses com você!`,
-
         foto: "coracao5.jpg"
       }
-
     ];
-
-
-    /* =========================================================
-       ELEMENTOS DA PÁGINA
-       ========================================================= */
 
     const heartsContainer = document.getElementById("hearts");
     const overlay = document.getElementById("overlay");
@@ -236,45 +162,27 @@ Eu te amo, meu amor! Muito, muito, muito, muito, do nosso jeitinho. Feliz 7 mese
     const letterPhoto = document.getElementById("letterPhoto");
     const closeBtn = document.getElementById("closeBtn");
 
-    /* =========================================================
-       GRADE DE PIXELS DO CORAÇÃO
-       ========================================================= */
-
     const HEART_PIXELS = [
       [2, 0], [3, 0], [7, 0], [8, 0],
-
       [1, 1], [2, 1], [3, 1], [4, 1],
       [6, 1], [7, 1], [8, 1], [9, 1],
-
       [0, 2], [1, 2], [2, 2], [3, 2], [4, 2],
       [5, 2], [6, 2], [7, 2], [8, 2], [9, 2], [10, 2],
-
       [0, 3], [1, 3], [2, 3], [3, 3], [4, 3],
       [5, 3], [6, 3], [7, 3], [8, 3], [9, 3], [10, 3],
-
       [0, 4], [1, 4], [2, 4], [3, 4], [4, 4],
       [5, 4], [6, 4], [7, 4], [8, 4], [9, 4], [10, 4],
-
       [1, 5], [2, 5], [3, 5], [4, 5], [5, 5],
       [6, 5], [7, 5], [8, 5], [9, 5],
-
       [2, 6], [3, 6], [4, 6], [5, 6],
       [6, 6], [7, 6], [8, 6],
-
       [3, 7], [4, 7], [5, 7], [6, 7], [7, 7],
-
       [4, 8], [5, 8], [6, 8],
-
       [5, 9]
     ];
 
-    /* =========================================================
-       CRIAÇÃO DO CORAÇÃO EM PIXEL ART
-       ========================================================= */
-
     function criarHeartSVG() {
       const ns = "http://www.w3.org/2000/svg";
-
       const svg = document.createElementNS(ns, "svg");
 
       svg.setAttribute("viewBox", "0 0 11 10");
@@ -282,48 +190,34 @@ Eu te amo, meu amor! Muito, muito, muito, muito, do nosso jeitinho. Feliz 7 mese
 
       HEART_PIXELS.forEach(([x, y]) => {
         const rect = document.createElementNS(ns, "rect");
-
         rect.setAttribute("class", "heart-pixel");
         rect.setAttribute("x", x);
         rect.setAttribute("y", y);
         rect.setAttribute("width", 1);
         rect.setAttribute("height", 1);
         rect.setAttribute("fill", "#ff2d6b");
-
         svg.appendChild(rect);
       });
 
       return svg;
     }
 
-    /* =========================================================
-       CRIA OS QUATRO CORAÇÕES NA TELA
-       ========================================================= */
-
     CORACOES.forEach((item, i) => {
       const card = document.createElement("div");
-
       card.className = "heart-card";
       card.id = "card-" + i;
 
       const btn = document.createElement("button");
-
       btn.className = "heart-btn";
       btn.id = "heart-" + i;
       btn.type = "button";
-
-      btn.setAttribute(
-        "aria-label",
-        "Abrir " + item.titulo
-      );
+      btn.setAttribute("aria-label", "Abrir " + item.titulo);
 
       const wrap = document.createElement("div");
-
       wrap.className = "heart-wrap";
       wrap.appendChild(criarHeartSVG());
 
       const label = document.createElement("span");
-
       label.className = "heart-wrap__label";
       label.textContent = item.titulo;
 
@@ -338,27 +232,17 @@ Eu te amo, meu amor! Muito, muito, muito, muito, do nosso jeitinho. Feliz 7 mese
       });
     });
 
-    /* =========================================================
-       ABRIR CARTA
-       ========================================================= */
-
     function abrirCarta(i) {
       const item = CORACOES[i];
 
       letterTitle.textContent = item.titulo;
       letterText.textContent = item.texto;
-
-      // As imagens estão soltas na mesma pasta do index.html
       letterPhoto.src = item.foto;
       letterPhoto.alt = item.titulo;
 
       overlay.classList.add("is-visible");
       closeBtn.focus();
     }
-
-    /* =========================================================
-       FECHAR CARTA
-       ========================================================= */
 
     function fecharCarta() {
       overlay.classList.remove("is-visible");
@@ -367,30 +251,17 @@ Eu te amo, meu amor! Muito, muito, muito, muito, do nosso jeitinho. Feliz 7 mese
     closeBtn.addEventListener("click", fecharCarta);
 
     overlay.addEventListener("click", (e) => {
-      if (e.target === overlay) {
-        fecharCarta();
-      }
+      if (e.target === overlay) fecharCarta();
     });
 
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        fecharCarta();
-      }
+      if (e.key === "Escape") fecharCarta();
     });
 
-    /* =========================================================
-       AVISO CASO A FOTO NÃO SEJA ENCONTRADA
-       ========================================================= */
-
     letterPhoto.addEventListener("error", () => {
-      console.error(
-        "Não foi possível carregar a imagem:",
-        letterPhoto.src
-      );
-
+      console.error("Não foi possível carregar a imagem:", letterPhoto.src);
       letterPhoto.alt = "Imagem não encontrada: " + letterPhoto.src;
     });
   </script>
-
 </body>
 </html>
